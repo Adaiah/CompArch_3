@@ -48,7 +48,7 @@ ProgCtx analyzeProg(const unsigned int opsLatency[],  InstInfo progTrace[], unsi
 		ctx[i].type = ROOT;
 		ctx[i].cycleNum = opsLatency[progTrace[i].opcode];
 		ctx[i].InstLatency = 0;
-		
+	
 		for (int j = i-1; j >=0; j--) //looking for dependencies
 		{
 			if (ctx[i].info.src1Idx == ctx[j].info.dstIdx && ctx[i].depend1 == EMPTY)
@@ -125,7 +125,6 @@ return value: -1 if unsuccessfull
 int getInstDeps(ProgCtx ctx, unsigned int theInst, int *src1DepInst, int *src2DepInst) {
 	pProgInst temp = (pProgInst)ctx;
 	if (theInst<0 || theInst> InstNum || ctx==NULL) return -1;
-	if(temp[theInst].type==ROOT) return -1;
 	*src1DepInst = temp[theInst].depend1;
 	*src2DepInst = temp[theInst].depend2 ;
 	return 0;
