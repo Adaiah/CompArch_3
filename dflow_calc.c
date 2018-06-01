@@ -83,8 +83,6 @@ ProgCtx analyzeProg(const unsigned int opsLatency[],  InstInfo progTrace[], unsi
 				}
 			}
 		}
-		printf("latency %d \n", ctx[i].cycleNum);
-
 	}
 	return (void*)ctx;
 }
