@@ -83,6 +83,8 @@ ProgCtx analyzeProg(const unsigned int opsLatency[],  InstInfo progTrace[], unsi
 				}
 			}
 		}
+		printf("latency %d \n", ctx[i].cycleNum);
+
 	}
 	return (void*)ctx;
 }
@@ -143,7 +145,7 @@ int getProgDepth(ProgCtx ctx) {
 
 	for (unsigned int i = 0; i < InstNum; i++)
 	{
-		if (temp[i].InstLatency >= maxLatency)
+		if ((temp[i].InstLatency + temp[i].cycleNum) >= maxLatency)
 		{
 			maxLatency = temp[i].InstLatency + temp[i].cycleNum;
 		}
